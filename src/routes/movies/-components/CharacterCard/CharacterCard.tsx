@@ -1,16 +1,9 @@
+import { useCharacter } from '@/hooks/useCharacter';
 import type { CharacterCardProps } from '@/routes/movies/-components/CharacterCard/CharacterCard.types';
-import type { Character } from '@/types/Character';
-import { useSuspenseQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 
 export function CharacterCard({ characterUrl }: CharacterCardProps) {
-  const { data: character } = useSuspenseQuery<Character>({
-    queryKey: ['character', characterUrl],
-    queryFn: async () => {
-      const res = await fetch(characterUrl);
-      return res.json();
-    },
-  });
+  const { data: character } = useCharacter(characterUrl);
 
   return (
     <Link

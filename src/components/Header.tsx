@@ -20,12 +20,12 @@ export function Header() {
       </Link>
       <Link
         role="link"
-        aria-label="Navigate to Films page"
+        aria-label="Navigate to Movies page"
         className="flex items-center gap-1 rounded p-2 text-xl text-white hover:bg-gray-800"
         to={Routes.MOVIES}
       >
         <IoFilmSharp />
-        Films
+        Movies
       </Link>
     </nav>
   );

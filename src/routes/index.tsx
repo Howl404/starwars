@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router';
-import logo from '../logo.svg';
 import { Routes } from '@/constants/api';
 
 export const Route = createFileRoute(Routes.HOME)({
@@ -8,33 +7,41 @@ export const Route = createFileRoute(Routes.HOME)({
 
 function App() {
   return (
-    <div className="text-center">
-      <header className="flex min-h-screen flex-col items-center justify-center bg-[#282c34] text-[calc(10px+2vmin)] text-white">
-        <img
-          src={logo}
-          className="pointer-events-none h-[40vmin] animate-[spin_20s_linear_infinite]"
-          alt="logo"
-        />
-        <p>
-          Test test Edit <code>src/routes/index.tsx</code> and save to reload.
+    <div className="flex flex-1 flex-col items-center justify-center bg-black">
+      <div className="container flex flex-col gap-8 px-4 text-center">
+        <h1 className="bg-gradient-to-r bg-clip-text text-6xl font-extrabold text-yellow-400 md:text-8xl">
+          Star Wars Universe
+        </h1>
+
+        <p className="mx-auto max-w-2xl text-xl text-gray-400">
+          Welcome to a galaxy far, far away. Explore the epic saga through its
+          legendary films and unforgettable characters.
         </p>
-        <a
-          className="text-[#61dafb] hover:underline"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <a
-          className="text-[#61dafb] hover:underline"
-          href="https://tanstack.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn TanStack
-        </a>
-      </header>
+
+        <div className="star-wars-container">
+          <div className="star-wars-crawl">
+            <div className="auto flex flex-col gap-40 text-justify text-5xl text-yellow-400">
+              <p>
+                It is a period of civil war. Rebel spaceships, striking from a
+                hidden base, have won their first victory against the evil
+                Galactic Empire.
+              </p>
+
+              <p>
+                During the battle, Rebel spies managed to steal secret plans to
+                the Empire's ultimate weapon, the DEATH STAR, an armored space
+                station with enough power to destroy an entire planet.
+              </p>
+
+              <p>
+                Pursued by the Empire's sinister agents, Princess Leia races
+                home aboard her starship, custodian of the stolen plans that can
+                save her people and restore freedom to the galaxy....
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

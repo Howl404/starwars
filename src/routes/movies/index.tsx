@@ -4,17 +4,17 @@ import { useMovies } from '@/routes/movies/-hooks/useMovies';
 import { createFileRoute, Link } from '@tanstack/react-router';
 
 export const Route = createFileRoute(`${Routes.MOVIES}/`)({
-  component: RouteComponent,
+  component: MoviesPage,
 });
 
-function RouteComponent() {
+function MoviesPage() {
   const { data: movies, isLoading: isMoviesLoading } = useMovies();
 
   return (
     <div
       role="list"
-      aria-label="List of films"
-      className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
+      aria-label="List of movies"
+      className="grid grid-cols-1 gap-4 p-4 sm:p-6 md:grid-cols-2 lg:grid-cols-3"
     >
       {isMoviesLoading &&
         Array.from({ length: 6 }).map((_, index) => (

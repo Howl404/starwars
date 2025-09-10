@@ -17,7 +17,7 @@ function RouteComponent() {
   const { data: movie, isLoading: isMovieLoading } = useMovie(movieId);
 
   return (
-    <div className="flex flex-col justify-around gap-4 md:gap-8 lg:flex-row lg:gap-16">
+    <div className="flex flex-col justify-around gap-4 p-4 sm:p-6 md:gap-8 lg:flex-row lg:gap-16">
       {isMovieLoading && (
         <>
           <MovieDetailsSkeleton />

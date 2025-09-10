@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@tailwind utilities;
+
 body {
   @apply m-0;
   font-family:
@@ -12,4 +14,29 @@ body {
 code {
   font-family:
     source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+@layer utilities {
+  @keyframes crawl {
+    0% {
+      transform: rotateX(20deg) translateY(70vh);
+    }
+    100% {
+      transform: rotateX(20deg) translateY(-200vh);
+    }
+  }
+
+  .star-wars-crawl {
+    position: relative;
+    transform-origin: 50% 100%;
+    animation: crawl 40s linear infinite;
+  }
+
+  .star-wars-container {
+    position: relative;
+    height: 60vh;
+    perspective: 1000px;
+    overflow: hidden;
+    background: linear-gradient(to bottom, transparent 0%, black 100%);
+  }
 }
