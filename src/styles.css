@@ -19,7 +19,7 @@ code {
 @layer utilities {
   @keyframes crawl {
     0% {
-      transform: rotateX(20deg) translateY(70vh);
+      transform: rotateX(20deg) translateY(60vh);
     }
     100% {
       transform: rotateX(20deg) translateY(-200vh);
@@ -34,7 +34,7 @@ code {
 
   .star-wars-container {
     position: relative;
-    height: 60vh;
+    height: 55vh;
     perspective: 1000px;
     overflow: hidden;
     background: linear-gradient(to bottom, transparent 0%, black 100%);

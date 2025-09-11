@@ -6,4 +6,5 @@ export type Movie = {
   producer: string;
   release_date: string;
   characters: string[];
+  url: string;
 };

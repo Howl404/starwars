@@ -1,11 +1,11 @@
 import { MOVIES_API_URL } from '@/constants/api';
 import type { Movie } from '@/types/Movie';
-import { useQueryClient, useQuery } from '@tanstack/react-query';
+import { useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
 
 export function useMovie(movieId: string) {
   const queryClient = useQueryClient();
 
-  return useQuery<Movie>({
+  return useSuspenseQuery<Movie>({
     queryKey: ['movie', movieId],
     queryFn: async () => {
       const movies = queryClient.getQueryData<Movie[]>(['movies']);
