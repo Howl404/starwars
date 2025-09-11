@@ -11,7 +11,7 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
-    ignores: ['**/routeTree.gen.ts'],
+    ignores: ['**/routeTree.gen.ts', '**/coverage/**'],
   },
   {
     ...pluginReact.configs.flat.recommended,

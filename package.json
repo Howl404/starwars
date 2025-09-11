@@ -9,6 +9,7 @@
     "serve": "vite preview",
     "lint": "eslint . --fix && prettier --write .",
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "prepare": "husky"
   },
   "lint-staged": {
