@@ -16,6 +16,7 @@ export function Search({
 
   return (
     <input
+      aria-label={placeholder}
       type="text"
       placeholder={placeholder}
       value={inputValue}
