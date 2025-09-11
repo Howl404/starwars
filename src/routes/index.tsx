@@ -2,10 +2,10 @@ import { createFileRoute } from '@tanstack/react-router';
 import { Routes } from '@/constants/api';
 
 export const Route = createFileRoute(Routes.HOME)({
-  component: App,
+  component: HomePage,
 });
 
-function App() {
+function HomePage() {
   return (
     <div className="flex flex-1 flex-col items-center justify-center bg-black">
       <div className="container flex flex-col gap-8 px-4">
