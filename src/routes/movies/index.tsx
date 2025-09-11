@@ -3,27 +3,38 @@ import { Search } from '@/components/Search/Search';
 import { Routes } from '@/constants/api';
 import type { Movie } from '@/types/Movie';
 import { createFileRoute } from '@tanstack/react-router';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useMovies } from './-hooks/useMovies';
+import { DefaultErrorFallback } from '@/components/SuspenseWithErrorBoundary/components/DefaultErrorFallback';
 
 export const Route = createFileRoute(`${Routes.MOVIES}/`)({
   component: MoviesPage,
 });
 
 function MoviesPage() {
-  const { data: movies, isLoading: isMoviesLoading } = useMovies();
+  const {
+    data: movies,
+    isLoading: isMoviesLoading,
+    isError: isMoviesError,
+    error: moviesError,
+  } = useMovies();
 
   const [filteredMovies, setFilteredMovies] = useState<Movie[]>([]);
 
-  const handleSearch = (query: string) => {
-    const normalizedQuery = query.toLowerCase().trim();
+  const handleSearch = useCallback(
+    (query: string) => {
+      if (!movies) return;
 
-    const result = movies?.filter((movie) =>
-      movie.title?.toLowerCase().includes(normalizedQuery)
-    );
+      const normalizedQuery = query.toLowerCase().trim();
 
-    setFilteredMovies(result || []);
-  };
+      const result = movies?.filter((movie) =>
+        movie.title?.toLowerCase().includes(normalizedQuery)
+      );
+
+      setFilteredMovies(result || []);
+    },
+    [movies]
+  );
 
   useEffect(() => {
     if (movies) {
@@ -41,7 +52,11 @@ function MoviesPage() {
       <div
         role="list"
         aria-label="List of movies"
-        className="grid flex-1 grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
+        className={`grid flex-1 gap-4 ${
+          isMoviesError || (!isMoviesLoading && !filteredMovies.length)
+            ? 'grid-cols-1'
+            : 'grid-cols-1 md:grid-cols-3 lg:grid-cols-4'
+        }`}
       >
         {isMoviesLoading &&
           Array.from({ length: 6 }).map((_, index) => (
@@ -50,9 +65,10 @@ function MoviesPage() {
         {filteredMovies?.map((movie) => (
           <MovieCard key={movie.episode_id} movie={movie} />
         ))}
-        {!isMoviesLoading && !filteredMovies.length && (
+        {!isMoviesLoading && !isMoviesError && !filteredMovies.length && (
           <p className="text-center text-xl text-gray-500">No movies found</p>
         )}
+        {isMoviesError && <DefaultErrorFallback error={moviesError} />}
       </div>
     </div>
   );

@@ -55,7 +55,8 @@ export function CharactersPage() {
         role="list"
         aria-label="List of characters"
         className={`grid flex-1 gap-4 ${
-          isCharacterError
+          isCharacterError ||
+          (!isCharactersLoading && !filteredCharacters.length)
             ? 'grid-cols-1'
             : 'grid-cols-1 md:grid-cols-3 lg:grid-cols-4'
         }`}
