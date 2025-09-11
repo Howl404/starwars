@@ -1,5 +1,5 @@
-import type { CharacterField } from "../CharacterDetails.types";
-import type { Character } from "@/types/Character";
+import type { CharacterField } from '../CharacterDetails.types';
+import type { Character } from '@/types/Character';
 
 export function getCharacterFieldValue(
   character: Character,
