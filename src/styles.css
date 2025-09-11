@@ -22,14 +22,14 @@ code {
       transform: rotateX(20deg) translateY(60vh);
     }
     100% {
-      transform: rotateX(20deg) translateY(-200vh);
+      transform: rotateX(20deg) translateY(-90vh);
     }
   }
 
   .star-wars-crawl {
     position: relative;
     transform-origin: 50% 100%;
-    animation: crawl 40s linear infinite;
+    animation: crawl 20s linear infinite;
   }
 
   .star-wars-container {
